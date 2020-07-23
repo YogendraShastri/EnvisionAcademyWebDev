@@ -1,0 +1,27 @@
+        *{
+  margin:0px;
+  padding:0px;
+}
+
+.content_notice {
+  background-color: blue;
+  width:1200px;
+  margin:20px auto;
+  box-shadow:1px 1px 10px 2px #333;
+  border-radius:5px;
+  overflow:hidden;
+
+}
+
+.notice_header{
+background-color:brown;
+color:white;
+padding:15px 0px;
+
+}
+
+.moving-block{
+padding:10px;
+height:400px;
+
+}

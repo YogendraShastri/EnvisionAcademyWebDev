@@ -1,0 +1,157 @@
+{% extends "layout.html" %}
+{% block body %}
+  <!-- Page Header -->
+  <header class="masthead pt-5 pb-5" style="background-image: url('{{ url_for('static',filename='img/logo_wallpaper.jpg')}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+         <div class="site-heading">
+
+<!--            <span class="subheading">{{params['blog_sub']}}</span>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+<hr />
+<section>
+  <div class="container text-center">
+    <div class="row pt-4 text-center">
+      <div class="col-lg-6 col-md-12 col-12 mx-auto">
+       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      {% set fname = 'img/'+ params["first_slide"]  %}
+      <img class="d-block w-100 mt-3" src="{{url_for('static', filename=fname)}}" alt="First slide">
+    </div>
+    <div class="carousel-item">
+        {% set fname = 'img/'+ params["second_slide"]  %}
+      <img class="d-block w-100" src="{{url_for('static', filename=fname)}}" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+        {% set fname = 'img/'+  params["third_slide"]  %}
+      <img class="d-block w-100" src="{{url_for('static', filename=fname)}}" alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+      </div>
+      <div class="col-lg-6 col-md-10 mx-auto">
+        <h1 class="text-uppercase text-danger"> About All</h1>
+         <p>
+            Envision academy is a prestigious coaching institute located in Sakari, Bilaspur Chhattisgarh.
+            The institute is very popular amongst the students for its
+            courses ,guidance and Preparation techniques. The same applies to the faculty. This coaching institute appreciates
+             the students and faculty member's efforts to get better results.
+         </p>
+      </div>
+    </div>
+  </div>
+</section>
+<br />
+ <hr />
+<section>
+  <div class="container text-center mt-3 pt- mb-5">
+    <br>
+    <div class="row">
+      <div class="col-lg-6 col-md-12 col-12 mx-auto">
+        <h1 class="text-uppercase text-info">Recent updates</h1>
+        <p>
+            This institute is established in 2020 and come up with many courses for different standards.
+            We also provides online classes and other things.
+            We uploads our videos so that student can access it any time any where in the era of covid-19.
+            We have notification bar here so that you do not miss any update related to our coaching institute.
+         </p>
+      </div>
+      <div class="col-lg-6 col-md-12 col-12 mx-auto">
+        <style>
+
+
+.content_notice {
+  background-color: white;
+  width:400px;
+  margin:20px auto;
+  box-shadow:1px 1px 10px 2px;
+  border-radius:5px;
+  overflow:hidden;
+}
+
+.notice_header{
+background-color:brown;
+color:white;
+padding:15px 0px;
+}
+
+.moving-block{
+padding:5px;
+height:300px;
+
+}
+    </style>
+
+    <h1 class="notice_header " align="center"> Notifications</h1>
+     <marquee behavior="scroll" scrollamount="10" direction="up"
+          onmouseover="this.setAttribute('scrollamount',0,0); this.stop()"
+          onmouseout="this.setAttribute('scrollamount',2,0); this.start()"
+              class="moving-block border border-info border-top-0"">
+          {% for post in posts[-params['blog_number']:]%}
+          <div class="post-preview">
+          <a href="/posts/{{post.slug}}">
+            <p class="post-title" style="font-size:27px">:-
+             {{post.title}}
+                {% set fname = 'img/'+  params["notif_img"]  %}
+                <img class="img-fluid w-10 mb-4" src="{{url_for('static', filename=fname)}}" alt="" width="30" height="30">
+            </p>
+              {% endfor %}
+     </marquee>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-primary text-white">
+ <div class="container">
+  <article class="py-4 text-center">
+      <div>
+        <h3 class="display-4" href="tel:+919770985677">+91 7828909390</h3>
+        <p>If you want best service Call us now.</p>
+        <button class="btn btn-warning">Call Now</button>
+      </div>
+  </article>
+ </div>
+</section>
+<section class="bg-light text-black mt-5 pb-5">
+  <div class="container">
+    <h1 class="text-uppercase text-success text-center">Our Courses</h1>
+    <p class="text-muted text-center">We provides Couching for different Courses and Standards.</p>
+    <div class="card-deck">
+        {% for course in courses %}
+         <div class="card col-lg-4 col-md-6 col-12">
+             {% set fname = 'img/'+  params["courses_img"]  %}
+             <img class="img-fluid card-img-top mt-2"  src="{{url_for('static', filename=fname)}}" alt="" >
+             <div class="card-body">
+             <h5 class="card-title">{{course.title}}</h5>
+             <p class="card-text">{{course.description}}</p>
+             <p class="card-text"><small class="text-muted">Last updated  {{course.date}}</small></p>
+             </div>
+         </div>
+        {% endfor %}
+     </div>
+  </div>
+</section>
+{% endblock %}

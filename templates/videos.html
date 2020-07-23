@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block body %}
+  <!-- Page Header -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <header class="masthead" style="background-image: url('{{ url_for('static',filename='img/videos.jpg')}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1 class="font-weight-bold">Videos</h1>
+            <span class="subheading">Find subject related all videos here..</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section>
+    <div class="row">
+      {% for videos in video_tutorial %}
+      <div class="col-lg-3 col-md-4 col-6 text-center border ">
+      <h3>{{videos.title}}</h3>
+       <iframe src="{{videos.link}}" width="320" height="215">
+       </iframe>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+{% endblock %}

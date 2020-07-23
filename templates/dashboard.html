@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block body %}
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ url_for('static',filename='img/home-bg.jpg')}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>{{params['blog_name']}}</h1>
+            <span class="subheading">{{params['blog_sub']}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto px-2">
+          <h1>Basic operation: </h1>
+          <a href="/edit/0"><button type="button" class="btn btn-success px-2 mt-3">Add/edit Notification</button></a>
+          <a href="/dashboard"><button type="button" class="btn btn-success mt-3">Dashboard Home</button></a>
+          <a href="/add_videos"><button type="button" class="btn btn-success mt-3">Add/edit Videos</button></a>
+          <a href="/add_faculty"><button type="button" class="btn btn-success mt-3">Add/edit Faculty</button></a>
+          <a href="/add_courses"><button type="button" class="btn btn-success mt-3">Add/edit Courses</button></a>
+          <a href="/logout"><button type="button" class="btn btn-success mt-3">LOG OUT</button></a>
+          <br>
+         <hr />
+          <h1>Upload images: </h1>
+          <form action="uploader" method=post enctype=multipart/form-data>
+          <input type=file name=file1>
+          <input type=submit class="btn btn-success" value=Upload>
+          </form>
+         <hr />
+        <table class="table table-bordered">
+       <thead  class="thead-dark">
+        <tr>
+            <th scope="col">Sno</th>
+            <th scope="col">Title</th>
+            <th scope="col">Date</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+     </thead>
+            <tbody>
+
+     {% for post in posts %}
+     <tr>
+      <th scope="row">{{post.sno}}</th>
+      <td>{{post.title}}</td>
+      <td>{{post.date}}</td>
+         <td><a href="/edit/{{post.sno}}"><button type="button" class="btn btn-success">Edit</button></a></td>
+         <td><a href="/delete/{{post.sno}}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+     </tr>
+     {% endfor %}
+  </tbody>
+</table>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

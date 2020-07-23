@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block body %}
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ url_for('static',filename='img/home-bg.jpg')}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>{{params['blog_name']}}</h1>
+            <span class="subheading">{{params['blog_sub']}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <section>
+      <div class="container-fluid text-center">
+      <h1>Basic operation: </h1>
+          <a href="/edit/0"><button type="button" class="btn btn-success">Add/edit Notification</button></a>
+          <a href="/dashboard"><button type="button" class="btn btn-success">Dashboard Home</button></a>
+          <a href="/add_videos"><button type="button" class="btn btn-success">Add/edit videos</button></a>
+          <a href="/add_faculty"><button type="button" class="btn btn-success">Add/edit Faculty</button></a>
+          <a href="/logout"><button type="button" class="btn btn-success">LOG OUT</button></a>
+         <hr />
+      </div>
+    <div class="container mb-5">
+        <h2 class="text-center">Add/Edit videos</h2>
+           <form action="/edit_videos/{{sno}}" id="contactForm" method="post" name="sentMessage" novalidate>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>title</label>
+                <h4>Title</h4>
+              <input type="text" class="form-control" placeholder="title" name='title' id="title" value="{{post.title}}">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Description</label>
+                <h4>Description</h4>
+              <input type="text" class="form-control" placeholder="Description" name="desc" id="desc" value="{{post.description}}">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Link</label>
+                <h4>Link</h4>
+              <input rows="5" class="form-control" placeholder="Link" name="link" id="link" value="{{post.link}}">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <br>
+          <div id="success"></div>
+          <button type="submit" class="btn btn-primary" id="sendMessageButton">Submit</button>
+        </form>
+    </div>
+</section>
+
+
+{% endblock %}

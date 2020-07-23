@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block body %}
+  <header class="masthead" style="background-image: url('{{ url_for('static',filename='img/faculty.jpg')}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Institute Faculty</h1>
+            <span class="subheading">The way of guidance matters for good guidance.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+<section>
+     <div class="container bcontent">
+        <h2 class="text-center">All Faculty members</h2>
+        <hr />
+         <br />
+         <div class="row no-gutters">
+             {% for faculties in posts %}
+             <div class="col-lg-3 col-md-4 col-6">
+              <div class="card ml-2">
+                    <div class="card-body">
+                        {% set fname = 'img/'+  faculties.image  %}
+<!--                    <img class=" img-fluid rounded-circle w-20 mb-4"  src="{{url_for('static', filename=fname)}}" >-->
+                        <img class="img-fluid w-20 mb-4 " src="{{url_for('static', filename=fname)}}" alt="" width="100%" height="50%">
+                        <h5 class="card-title">{{faculties.name}}</h5>
+                        <p class="card-text">{{faculties.details}}</p>
+                        <p class="card-text text-danger">{{faculties.phone}}</p>
+                    </div>
+                </div>
+            </div>
+              {% endfor %}
+         </div>
+    </div>
+</section>
+{% endblock %}

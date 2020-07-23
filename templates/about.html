@@ -1,0 +1,202 @@
+{% extends "layout.html" %}
+{% block body %}
+ <link href="{{ url_for('static',filename='css/about.css')}}" rel="stylesheet">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ url_for('static',filename='img/about_us.jpg')}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1 style="color:white">About Us</h1>
+            <span class="subheading">Wants to Know about Me and My Team.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+<section id="team">
+    <div class="container my-3 py-5 text-center">
+        <div class="row nb-5">
+            <div class="col">
+                <h1 id="h1-tag">Our Team</h1>
+                <p class="mt-3">It is is coching website just to introduce out
+                team and motive to influence the peoples</p>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        {% set fname = 'img/'+  params["founder1_img"]  %}
+                        <img class="img-fluid rounded-circle w-20 mb-4" src="{{url_for('static', filename=fname)}}" alt="" width="115" height="115">
+                        <h3 >{{params['f1_name']}}</h3>
+                        <h5>Founder</h5>
+                        <p>{{params['f1_details']}}</p>
+                        <p class="text-danger" >phone no - {{params['f1_phone']}}</p>
+                        <div class="d-flex flex-row justify-content-center">
+                           <div class="p-4">
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </div>
+                             <div class="p-4">
+                                <a href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </div>
+                             <div class="p-4">
+                                <a href="#">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        {% set fname = 'img/'+  params["founder2_img"]  %}
+                        <img class="img-fluid rounded-circle w-20 mb-4" src="{{url_for('static', filename=fname)}}" alt="" width="100" height="500">
+                        <h3>{{params['f2_name']}}</h3>
+                        <h5>Founder</h5>
+                        <p>{{params['f2_details']}}</p>
+                        <p class="text-danger">phone no - {{params['f2_phone']}}</p>
+                        <div class="d-flex flex-row justify-content-center">
+                            <div class="p-4">
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </div>
+                             <div class="p-4">
+                                <a href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </div>
+                             <div class="p-4">
+                                <a href="#">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        {% set fname = 'img/'+  params["founder3_img"]  %}
+                        <img class="img-fluid rounded-circle w-20 mb-4"  src="{{url_for('static', filename=fname)}}" alt="" width="115" height="115">
+                        <h3>{{params['f3_name']}}</h3>
+                        <h5>Founder</h5>
+                        <p>{{params['f3_details']}}</p>
+                        <p class="text-danger">phone no - {{params['f3_phone']}}</p>
+                        <div class="d-flex flex-row justify-content-center">
+                            <div class="p-4">
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </div>
+                             <div class="p-4">
+                                <a href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </div>
+                             <div class="p-4">
+                                <a href="#">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+</section>
+<section class="team-area">
+    <div class="container my-3 py-3 text-center">
+    <div class="row nb-5 py-5 text-center">
+            <div class="col">
+                <h1 id="h2-tag">Web Team</h1>
+                <p class="mt-3">{{params['web_team_quote']}}</p>
+            </div>
+        </div>
+    <div class="row nb-5 border border-success rounded">
+         <div class="col-lg-12 col-12 col-md-12 " >
+                         <div class="card border border-danger border-top-0 border-bottom-0">
+                             <div class="card-body text-center ">
+                                 <div class="img-area">
+                                    {% set fname = 'img/'+  params["yogi_img"]  %}
+                                     <img class="img-fluid rounded-circle w-20 mb-4"  src="{{url_for('static', filename=fname)}}" alt="" width="115" height="115">
+                                     <h4> Yogendra Shastri</h4>
+                                     <h6 style="visibility: 5">Front-end & Back-end Developer</h6>
+                                     <p>{{params['web_details']}}</p>
+                                     <!-- Button to Open the Modal -->
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                    Know More
+                                    </button>
+
+                <!-- The Modal -->
+                                    <div class="modal" id="myModal">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+
+      <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title text-center">Yogendra Shastri</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+
+      <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <div class="container">
+                                                <h4 align="left"> UG -         Guru Ghasidas Central University  </h4>
+                                                <h4 align="left"> PG -         NIT Durgapur, West Bengal</h4>
+                                                <h4 align="left"> Experience - 6 month intern at HSBC, job at Nokia </h4>
+                                                <h4 align="left"> Phone -  +   91 9770985677</h4>
+                                            </div>
+                                        </div>
+
+      <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                     <ul class="list inline pt-5">
+                                         <li class="list-inline-item">
+                                             <a href="https://www.facebook.com/yogendra.shastri.37/" class="social-icon pr-4" target="_blank">
+                                                 <i class="fa fa-facebook"></i>
+                                             </a>
+                                         </li>
+                                          <li class="list-inline-item">
+                                             <a href="#" class="social-icon pr-4" target="_blank">
+                                                 <i class="fa fa-twitter"></i>
+                                             </a>
+                                         </li>
+                                          <li class="list-inline-item">
+                                             <a href="#" class="social-icon" target="_blank">
+                                                 <i class="fa fa-instagram"></i>
+                                             </a>
+                                         </li>
+                                     </ul>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+    </div>
+</section>
+
+{% endblock %}

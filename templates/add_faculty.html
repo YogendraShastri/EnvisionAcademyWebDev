@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+{% block body %}
+<section>
+    <div class="container mb-5">
+        <h2 class="text-center">Add/Edit Faculty</h2>
+        <div>
+         <h1>Upload images: </h1>
+          <form action="uploader" method=post enctype=multipart/form-data>
+          <input type=file name=file1>
+          <input type=submit class="btn btn-success" value=Upload>
+          </form>
+         <hr />
+    </div>
+           <form action="/add_faculty" id="contactForm" method="post" name="sentMessage" novalidate>
+               <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>image</label>
+                <h4>image</h4>
+              <input type="text" class="form-control" placeholder="image" name='image' id="image">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+               <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>title</label>
+                <h4>Title</h4>
+              <input type="text" class="form-control" placeholder="name" name='name' id="name">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Details</label>
+                <h4>Details</h4>
+              <input type="text" class="form-control" placeholder="Details" name="details" id="details">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>phone</label>
+                <h4>phone</h4>
+              <input rows="5" class="form-control" placeholder="phone" name="phone" id="phone">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <br>
+          <div id="success"></div>
+          <button type="submit" class="btn btn-primary" id="sendMessageButton">Submit</button>
+        </form>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <table class="table table-bordered">
+       <thead  class="thead-dark">
+        <tr>
+            <th scope="col">Sno</th>
+            <th scope="col">image</th>
+            <th scope="col">name</th>
+            <th scope="col">Details</th>
+            <th scope="col">phone</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+     </thead>
+            <tbody>
+     {% for post in faculty %}
+     <tr>
+      <th scope="row">{{post.sno}}</th>
+         <td>{{post.image}}</td>
+      <td>{{post.name}}</td>
+         <td>{{post.details}}</td>
+         <td>{{post.phone}}</td>
+         <td><a href="/edit_faculty/{{post.sno}}"><button type="button" class="btn btn-success">Edit</button></a></td>
+         <td><a href="/delete_faculty/{{post.sno}}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+     </tr>
+     {% endfor %}
+  </tbody>
+</table>
+    </div>
+</section>
+{% endblock %}
